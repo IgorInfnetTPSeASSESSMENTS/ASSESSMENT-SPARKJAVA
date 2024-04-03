@@ -67,4 +67,13 @@ public class HotelService {
     public static void setProximoId(int proximoId) {
         HotelService.proximoId = proximoId;
     }
+    
+    public static boolean existeHotelComId(int id) {
+        for (Hotel hotel : hoteis) {
+            if (hotel.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -25,8 +25,15 @@ public class HotelController {
     public static Route incluirHotel = (req, res) -> {
         try {
             Hotel novoHotel = gsonDoHotel.fromJson(req.body(), Hotel.class);
+            
+
+            if (HotelService.existeHotelComId(novoHotel.getId())) {
+                return "Erro ao incluir hotel. Já existe um hotel com o mesmo ID.";
+            }
+            
             HotelService.incluirHotel(novoHotel);
-            return "Hotel inclu�do com sucesso!";
+            
+            return "Hotel incluído com sucesso!";
         } catch (Exception e) {
             e.printStackTrace();
             return "Erro ao incluir hotel.";

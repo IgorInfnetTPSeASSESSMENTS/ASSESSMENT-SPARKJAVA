@@ -15,8 +15,8 @@ public class Hotel extends Acomodacao {
     @Override
     public String toString() {
         return "\nID do hotel: " + id + "\nNúmero de estrelas: " + estrelas + "\nPossui piscina: " + possuiPiscina
-                + "\nPossui cafe da manha: " + possuiCafeDaManha + "\nAcomodações: " + 
-acomodacoes + "\nQuartos: " + this.getQuartos();
+                + "\nPossui cafe da manha: " + possuiCafeDaManha + "\nAcomodações disponíveis: " + 
+acomodacoes;
     }
     
     public Hotel(Integer id, int estrelas, boolean possuiPiscina, boolean possuiCafeDaManha, HashSet<Acomodacao> acomodacoes) {
@@ -75,6 +75,8 @@ acomodacoes + "\nQuartos: " + this.getQuartos();
     public void setPossuiCafeDaManha(boolean possuiCafeDaManha) {
         this.possuiCafeDaManha = possuiCafeDaManha;
     }
+    
+
 
     public Integer getId() {
         return id;

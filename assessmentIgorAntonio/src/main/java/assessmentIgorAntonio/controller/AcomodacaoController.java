@@ -25,22 +25,28 @@ public class AcomodacaoController {
 		}
 	};
 
-	public static Route incluirAcomodacaoPeloId = (req,  res) -> {
-		try {
-			Integer index = Integer.valueOf(req.params("idDoHotel"));
-			Integer index2 = Integer.valueOf(req.params("idDaAcomodacao"));
-			Acomodacao novaAcomodacao = gsonDaAcomodacao.fromJson(req.body(), Acomodacao.class);
-			
-			if(HotelService.obterHotelPeloId(index) != null) {
-				AcomodacaoService.incluirAcomodacaoPeloId(index, index2, novaAcomodacao);
-				return "Acomodação incluída com sucesso!";
-			} else {
-				return "Hotel especificado não existe!";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null; 
-		}
+	public static Route incluirAcomodacaoPeloId = (req, res) -> {
+	    try {
+	        Integer index = Integer.valueOf(req.params("idDoHotel"));
+	        Integer index2 = Integer.valueOf(req.params("idDaAcomodacao"));
+	        Acomodacao novaAcomodacao = gsonDaAcomodacao.fromJson(req.body(), Acomodacao.class);
+
+	        if (HotelService.obterHotelPeloId(index) != null) {
+	            Hotel hotel = HotelService.obterHotelPeloId(index);
+	            Set<Acomodacao> acomodacoes = hotel.getAcomodacoes();
+	            if (!acomodacoes.contains(novaAcomodacao)) {
+	                AcomodacaoService.incluirAcomodacaoPeloId(index, index2, novaAcomodacao);
+	                return "Acomodação incluída com sucesso!";
+	            } else {
+	                return "Acomodação já existente no hotel!";
+	            }
+	        } else {
+	            return "Hotel especificado não existe!";
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
 	};
 	
 	public static Route excluirAcomodacaoPeloId = (req,  res) -> {

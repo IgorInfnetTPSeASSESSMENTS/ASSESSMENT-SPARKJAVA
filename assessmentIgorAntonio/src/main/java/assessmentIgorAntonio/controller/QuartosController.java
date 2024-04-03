@@ -31,8 +31,13 @@ public class QuartosController {
 			Quarto quarto = gsonDosQuartos.fromJson(req.body(), Quarto.class);
 			
 			if(AcomodacaoService.obterAcomodacaoPeloId(index, index2) != null) {
-				QuartosService.incluirQuartoPeloId(index, index2, quarto);
-				return  "Quarto incluído com sucesso!";
+				if(!QuartosService.obterQuartos(index, index2).contains(quarto)) {
+					QuartosService.incluirQuartoPeloId(index, index2, quarto);
+					return  "Quarto incluído com sucesso!";
+				} else {
+					return  "Esse quarto já existe!!";
+				}
+				
 			} else {
 				return "Essa acomodação não existe!";
 			}

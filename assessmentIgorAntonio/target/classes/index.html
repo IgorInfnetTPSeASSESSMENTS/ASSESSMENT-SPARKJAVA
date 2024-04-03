@@ -1,31 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>App Reservas Online</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">appReservasOnline</a>
+      <a class="navbar-brand" href="#">App Reservas Online</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="/hoteis">getHoteis</a></li>
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/hoteis">Listar Hotéis</a></li>
+      <li><a href="/clientes">Listar Clientes</a></li>
+      <li><a href="/acomodacoes/1">Listar Acomodações</a></li>
+      <li><a href="/quartos/1/1">Listar Quartos</a></li>
     </ul>
   </div>
 </nav>
   
-<div class="container">
-  <h3>Inverted Navbar</h3>
-  <p>An inverted navbar is black instead of gray.</p>
-</div>
+<main style="margin-left: 10px;">
+<h1>Apresentação do Projeto</h1>
+
+    <p>Bem-vindo à nossa plataforma de <em>Reservas Online</em>! Aqui está uma visão geral do que oferecemos:</p>
+
+    <h2>Finalidade:</h2>
+    <p>Esse projeto visa criar um sistema de reserva de hoteis ou qualquer outro tipo de hotelaria!</p>
+
+    <h2>Objetivos:</h2>
+    <ul>
+        <li>Criar Hotéis</li>
+        <li>Criar Acomodações (Andares)</li>
+        <li>Criar Quartos para as Acomodações</li>
+        <li>Registrar Clientes</li>
+        <li>Realizar Diferentes reservas de um cliente em algum dos Hoteis a depender da disponibilidade</li>
+        <!-- Adicione mais objetivos conforme necessário -->
+    </ul>
+
+    <h2>Funcionalidades Principais:</h2>
+    <ul>
+		<li><h3>HOTEIS</h3></li>
+        <li>GET localport:8080/hoteis - retorna a lista de hoteis disponiveis.</li>
+        <li>POST localport:8080/hoteis - inclui um hotel na lista de hoteis disponiveis.</li>
+        <li>DELETE localport:8080/hoteis/idDoHotel - exclui um hotel da lista de hoteis disponiveis.</li>
+        <li>GET localport:8080/hoteis/idDoHotel - recupera um hotel pelo id, da lista de hoteis disponiveis.</li>
+        <br>
+        <li><h3>CLIENTES</h3></li>
+        <li>GET localport:8080/clientes - retorna a lista de clientes disponiveis.</li>
+        <li>POST localport:8080/clientes - inclui um cliente na lista de clientes.</li>
+        <li>DELETE localport:8080/clientes/idDoCliente - exclui um cliente da lista de clientes.</li>
+        <li>GET localport:8080/clientes/idDoCliente - recupera um cliente pelo id, da lista de clientes.</li>
+        <br>
+        <li><h3>ACOMODAÇÕES</h3></li>
+        <li>GET localport:8080/acomodacoes/idDoHotel - retorna a lista de acomodações de um hotel.</li>
+        <li>POST localport:8080/acomodacoes/idDoHotel/idDaAcomodacao - inclui uma acomodação na lista de acomodações de um hotel.</li>
+        <li>DELETE localport:8080/acomodacoes/idDoHotel/idDaAcomodacao - exclui uma acomodação da lista de acomodações de um hotel.</li>
+        <li>GET localport:8080/acomodacoes/idDoHotel/idDaAcomodacao - recupera uma acomodação pelo id da lista de acomodações de um hotel.</li>
+        <br>
+        <li><h3>QUARTOS</h3></li>
+        <li>GET localport:8080/quartos/:idDoHotel/:idDaAcomodacao - retorna a lista de quartos de uma acomodação em um hotel.</li>
+        <li>POST localport:8080/quartos/:idDoHotel/:idDaAcomodacao - inclui um quarto na lista de quartos de uma acomodação em um hotel.</li>
+        <li>DELETE localport:8080/quartos/:idDoHotel/:idDaAcomodacao/:idDoQuarto - exclui um quarto da lista de quartos de uma acomodação em um hotel.</li>
+        <li>GET localport:8080/quartos/:idDoHotel/:idDaAcomodacao/:idDoQuarto - recupera um quarto pelo id da lista de quartos de uma acomodação em um hotel.</li>
+        <br>
+        <li><h3>RESERVAS</h2></li>
+        <li>POST localport:8080/idDoCliente/reservar - realiza uma reserva em um hotel a partir do id do cliente fornecido.</li>
+        <br>
+        <!-- Adicione mais funcionalidades conforme necessário -->
+    </ul>
+
+    <p>Este projeto foi desenvolvido como parte do curso <em>Desenvolvimento de Serviços Web e Testes com Java</em> no Instituto Infnet, sob a orientação do professor <em>Elberth Lins Costa de Moraes</em>.</p>
+
+    <h2>Link do GitHub e Apresentação do Aluno, Curso, Instituição e Professor</h2>
+    <ul>
+        <li><strong>Repositório do Projeto no GitHub:</strong> <a href="https://github.com/IgorInfnetTPSeASSESSMENTS/ASSESSMENT-SPARKJAVA">Link para o Repositório</a></li>
+        <li><strong>Aluno:</strong> Igor Antonio Almeida Santos</li>
+        <li><strong>Curso:</strong> Desenvolvimento de Serviços Web e Testes com Java</li>
+        <li><strong>Instituição:</strong> Instituto Infnet</li>
+        <li><strong>Professor:</strong> Elberth Lins Costa de Moraes</li>
+    </ul>
+
+    <h2>Inicialização do Projeto</h2>
+    <ol>
+        <li><strong>Run JavaApplication</strong></li>
+        <li><strong>Acesse: localhost:8080/</strong></li>
+        <li><strong>Crie um hotel através do POSTMAN</strong></li>
+        <li><strong>Crie uma acomodação em um hotel através do POSTMAN</strong></li>
+        <li><strong>Crie um quarto para uma acomodação em um hotel através do POSTMAN</strong></li>
+        <li><strong>Registre um cliente através do POSTMAN</strong></li>
+        <li><strong>Realize uma reserva através do ID do cliente em um Hotel pelo POSTMAN</strong></li>
+        <li><strong>Não se esqueça de verificar se as entidades foram criadas em ordem lógica</strong></li>
+    </ol>
+
+    <p>Com essas informações, você estará pronto para iniciar o projeto e explorar as funcionalidades do Spark Java. Boa sorte!</p>
+</main>
 
 </body>
 </html>

@@ -1,5 +1,7 @@
 package assessmentIgorAntonio.model.domain;
 
+import java.util.Objects;
+
 public class Quarto {
 	
 	private int idDoQuarto;
@@ -8,7 +10,7 @@ public class Quarto {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "ID do quarto: " + idDoQuarto;
+		return "\nID do quarto: " + idDoQuarto + "\nDiponibilidade: " + disponivel;
 	}
 	
 	public boolean isDisponivel() {
@@ -27,5 +29,18 @@ public class Quarto {
 		this.idDoQuarto = idDoQuarto;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    Quarto quarto = (Quarto) o;
+	    return idDoQuarto == quarto.idDoQuarto;
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(idDoQuarto);
+	}
+
 	
 }

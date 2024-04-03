@@ -2,6 +2,7 @@ package assessmentIgorAntonio.model.domain;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 public class Acomodacao {
@@ -13,7 +14,7 @@ public class Acomodacao {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Andar número " + andarDaAcomodacao + "\n Quartos nesse andar: " + quartos;
+		return "Andar número " + andarDaAcomodacao + "\n Quartos nesse andar: " + this.getQuartos();
 	}
 	
 	public Acomodacao() {
@@ -65,5 +66,16 @@ public class Acomodacao {
 		this.quartos = quartos;
 	}
 	
-	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Acomodacao that = (Acomodacao) o;
+        return Objects.equals(andarDaAcomodacao, that.andarDaAcomodacao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(andarDaAcomodacao);
+    }
 }

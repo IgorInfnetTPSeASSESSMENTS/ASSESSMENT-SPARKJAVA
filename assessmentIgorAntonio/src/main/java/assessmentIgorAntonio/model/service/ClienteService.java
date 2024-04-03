@@ -54,16 +54,13 @@ public class ClienteService {
         return clientes;
     }
     
-    public static void realizarReserva(int idDoCliente, Reserva reserva) {
-        try {
-            Cliente cliente = ClienteService.obterClientePeloId(idDoCliente);
-           
-            	cliente.incluirReserva(reserva);
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Erro ao realizar reserva para o cliente com ID: " + idDoCliente);
+    
+    public static boolean existeClienteComEmail(String email) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getEmail().equals(email)) {
+                return true;
+            }
         }
-        
+        return false;
     }
 }

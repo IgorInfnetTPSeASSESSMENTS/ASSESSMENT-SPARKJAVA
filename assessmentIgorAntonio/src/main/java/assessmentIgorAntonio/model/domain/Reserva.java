@@ -1,5 +1,7 @@
 package assessmentIgorAntonio.model.domain;
 
+import java.util.Objects;
+
 import assessmentIgorAntonio.model.service.HotelService;
 
 public class Reserva {
@@ -14,8 +16,12 @@ public class Reserva {
     public String toString() {
     	// TODO Auto-generated method stub
     	try {
-    	return "\nHotel: " + HotelService.obterHotelPeloId(idDoHotelReservado)
-    			+ "\nAcomodacao: " + acomodacao + "\nQuarto: " + quarto + "\nData Início: " + dataInicio + " - Data Final: " + dataFim;
+    	return "\nHotel: " + "ID do hotel: " + HotelService.obterHotelPeloId(idDoHotelReservado).getId() +
+    			"\nNúmero de estrelas: " + HotelService.obterHotelPeloId(idDoHotelReservado).getEstrelas() + 
+    			"\nPossui piscina: " + HotelService.obterHotelPeloId(idDoHotelReservado).isPossuiPiscina() +
+    			"\nPossui cafe da manha: " + HotelService.obterHotelPeloId(idDoHotelReservado).isPossuiCafeDaManha() +
+    			"\nAcomodacao selecionada: " + "Andar número: " + acomodacao.getId() + 
+    			"\nQuarto: " + quarto + "\nData Início: " + dataInicio + " - Data Final: " + dataFim;
     	} catch(Exception e) {
     		e.printStackTrace();
     	}
@@ -67,5 +73,20 @@ public class Reserva {
 	public void setHotelReservado(Integer hotelReservado) {
 		this.idDoHotelReservado = hotelReservado;
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reserva reserva = (Reserva) o;
+        return Objects.equals(quarto, reserva.quarto) &&
+                Objects.equals(dataInicio, reserva.dataInicio) &&
+                Objects.equals(dataFim, reserva.dataFim);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(quarto, dataInicio, dataFim);
+    }
 	
 }

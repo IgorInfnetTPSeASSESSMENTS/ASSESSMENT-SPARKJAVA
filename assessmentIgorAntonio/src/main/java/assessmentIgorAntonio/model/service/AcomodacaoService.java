@@ -22,7 +22,11 @@ public class AcomodacaoService {
             Hotel hotel = HotelService.obterHotelPeloId(idDoHotel);
             acomodacao.setId(idDaAcomodacao);
 
-            hotel.adicionarAcomodacao(acomodacao);
+            if (!hotel.getAcomodacoes().contains(acomodacao)) {
+                hotel.adicionarAcomodacao(acomodacao);
+            } else {
+                System.out.println("Acomodação já existente no hotel.");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

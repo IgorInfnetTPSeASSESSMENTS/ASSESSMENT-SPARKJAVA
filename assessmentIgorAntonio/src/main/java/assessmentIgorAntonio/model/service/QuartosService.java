@@ -24,7 +24,11 @@ public class QuartosService {
 		try {
 			Hotel hotel = HotelService.obterHotelPeloId(idDoHotel);
 			Acomodacao acomodacao = hotel.obterAcomodacaoPeloId(idDaAcomodacao);
-			acomodacao.adicionarQuarto(quarto);
+			if(!acomodacao.getQuartos().contains(quarto)) {
+				acomodacao.adicionarQuarto(quarto);
+			} else {
+				System.out.println("Esse quarto já existe!");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	

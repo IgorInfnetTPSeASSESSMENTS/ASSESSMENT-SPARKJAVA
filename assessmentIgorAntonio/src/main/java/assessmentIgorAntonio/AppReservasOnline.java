@@ -4,6 +4,7 @@ import assessmentIgorAntonio.controller.AcomodacaoController;
 import assessmentIgorAntonio.controller.ClienteController;
 import assessmentIgorAntonio.controller.HotelController;
 import assessmentIgorAntonio.controller.QuartosController;
+import assessmentIgorAntonio.controller.ReservaController;
 import spark.Spark;
 
 public class AppReservasOnline {
@@ -14,7 +15,9 @@ public class AppReservasOnline {
 
             Spark.get("/", (req, res) -> {
                 try {
+                	
                     return AppReservasOnline.class.getResourceAsStream("/index.html");
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                     return "Erro ao carregar a p�gina.";
@@ -34,7 +37,7 @@ public class AppReservasOnline {
             Spark.get("/clientes/:id", ClienteController.obterClientePeloId);
             
             //RESERVAS
-            Spark.post("/:id/reservar", ClienteController.realizarReserva);
+            Spark.post("/:id/reservar", ReservaController.realizarReserva);
             
             //ACOMODACOES
             Spark.get("/acomodacoes/:idDoHotel", AcomodacaoController.obterAcomodacoesDeUmHotel);
