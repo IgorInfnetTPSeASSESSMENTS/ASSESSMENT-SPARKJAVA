@@ -2,6 +2,7 @@ package assessmentIgorAntonio.controller;
 
 import com.google.gson.Gson;
 
+import assessmentIgorAntonio.model.domain.Quarto;
 import assessmentIgorAntonio.model.domain.Reserva;
 import assessmentIgorAntonio.model.service.HotelService;
 import assessmentIgorAntonio.model.service.ClienteService;
@@ -18,13 +19,16 @@ public class ReservaController {
 		try {
 			Integer idCliente = Integer.valueOf(req.params("id"));
             Reserva novaReserva = gsonDaReserva.fromJson(req.body(), Reserva.class);
+            Quarto quartoEspecifico = QuartosService.obterQuartoPeloId(novaReserva.getHotelReservado(), novaReserva.getAcomodacao().getId(), novaReserva.getQuarto().getIdDoQuarto());
             
             String mensagemErro = validarReserva(novaReserva, idCliente);
             if (mensagemErro != null) {
                 return mensagemErro;
-            }
-            
+            } else {
+            quartoEspecifico.setDisponivel(false);
             ReservaService.realizarReserva(idCliente, novaReserva);
+            }
+           
             return "Reserva realizada com sucesso!";
         } catch (Exception e) {
             e.printStackTrace();

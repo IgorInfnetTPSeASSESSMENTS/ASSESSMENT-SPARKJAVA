@@ -37,6 +37,10 @@ public class Reserva {
     	this.dataFim = dataFim;
     }
   
+	public Reserva() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Acomodacao getAcomodacao() {
 		return acomodacao;
 	}

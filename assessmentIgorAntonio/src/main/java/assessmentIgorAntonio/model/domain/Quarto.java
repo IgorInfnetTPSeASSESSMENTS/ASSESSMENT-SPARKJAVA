@@ -7,6 +7,10 @@ public class Quarto {
 	private int idDoQuarto;
 	private boolean disponivel;
 	
+	public Quarto(int i) {
+		this.idDoQuarto = i;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
