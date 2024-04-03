@@ -10,7 +10,7 @@ import spark.Route;
 
 public class HotelController {
 
-    private static Gson gson = new Gson();
+    private static Gson gsonDoHotel = new Gson();
 
     public static Route getHoteis = (req, res) -> {
         try {
@@ -18,15 +18,15 @@ public class HotelController {
             return hoteis;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Erro ao listar hotéis.";
+            return "Erro ao listar hotï¿½is.";
         }
     };
 
     public static Route incluirHotel = (req, res) -> {
         try {
-            Hotel novoHotel = gson.fromJson(req.body(), Hotel.class);
+            Hotel novoHotel = gsonDoHotel.fromJson(req.body(), Hotel.class);
             HotelService.incluirHotel(novoHotel);
-            return "Hotel incluído com sucesso!";
+            return "Hotel incluï¿½do com sucesso!";
         } catch (Exception e) {
             e.printStackTrace();
             return "Erro ao incluir hotel.";

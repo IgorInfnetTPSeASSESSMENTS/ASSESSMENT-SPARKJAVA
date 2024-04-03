@@ -1,6 +1,8 @@
 assessmentIgorAntonio\model\domain\Acomodacao.class
 assessmentIgorAntonio\model\domain\Hotel.class
 assessmentIgorAntonio\model\service\HotelService.class
+assessmentIgorAntonio\model\service\ClienteService.class
+assessmentIgorAntonio\controller\ClienteController.class
 assessmentIgorAntonio\AppReservasOnline.class
 assessmentIgorAntonio\controller\HotelController.class
 assessmentIgorAntonio\model\domain\Quarto.class
